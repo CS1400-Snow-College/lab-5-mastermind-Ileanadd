@@ -34,9 +34,12 @@ do
 {
     guessCount++;
 
-    Console.WriteLine($"Guess #{guessCount}: Please guess a sequence of {length} lowercase letters with no repeats");
+    Console.WriteLine($"Guess #{guessCount}: Please guess a sequence of {length} lowercase letters with no repeats.");
     guess = Console.ReadLine();
-
+    Console.WriteLine();
+    
 } while (guess != secret);
+
+Console.WriteLine($"You did it ! You guessed my secret ({secret}) in {guessCount} guesses.");
 
 

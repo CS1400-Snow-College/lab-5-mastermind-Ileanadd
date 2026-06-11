@@ -35,9 +35,36 @@ do
     guessCount++;
 
     Console.WriteLine($"Guess #{guessCount}: Please guess a sequence of {length} lowercase letters with no repeats.");
-    guess = Console.ReadLine();
+    guess = Console.ReadLine()!;
     Console.WriteLine();
-    
+
+    int rightPositions = 0;
+    int wrongPositions = 0;
+
+    for (int i = 0; i < secret.Length; i++)
+    {
+        if (guess[i] == secret[i])
+        {
+            rightPositions++;
+        }
+    }
+    for (int i = 0; i < guess.Length; i++)
+    {
+        for (int j = 0; j < secret.Length; j++)
+        {
+            if (guess[i] == secret[j] && i != j)
+            {
+                wrongPositions++;
+            }
+        }
+    }
+    if (guess != secret)
+    {
+        Console.WriteLine($"{wrongPositions} letters rigth, but in the wrong position");
+        Console.WriteLine($"{rightPositions} lettrs in the right position");
+        Console.WriteLine();
+    }
+
 } while (guess != secret);
 
 Console.WriteLine($"You did it ! You guessed my secret ({secret}) in {guessCount} guesses.");
